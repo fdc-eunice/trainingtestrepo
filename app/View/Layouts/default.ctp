@@ -14,9 +14,10 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$cakeDescription = __d('cake_dev', 'hello po');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,8 +43,17 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		</div>
 		<div id="content">
 
-			<?php echo $this->Flash->render(); ?>
+		<!-- <div style='text-align: right;'>
+			<?php if (AuthComponent::user()): ?>
+			Welcome <?php echo $current_user['User']['username']; ?>. <?php echo $this->HTML->link('logout', 
+				array('controller' => 'users', 'action' => 'logout')); ?>
+			<?php else: ?>
+				<?php echo $this->HTML->link('login', array('controller' => 'users', 'action' => 'login')); ?>
+			<?php endif; ?>
+		</div> -->
 
+			<?php echo $this->Flash->render(); ?>
+			<?php echo $this->Flash->render('auth'); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
@@ -58,6 +68,5 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			</p>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>
